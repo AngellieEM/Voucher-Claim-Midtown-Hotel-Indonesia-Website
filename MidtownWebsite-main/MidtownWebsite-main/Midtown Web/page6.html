@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htt">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voucher</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Body and Background */
+        body {
+            background: linear-gradient(to right, #f0f0f5, #d9e1f2);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Navbar Styles */
+        .navbar-custom {
+            background-color: black;
+        }
+        .navbar-custom .navbar-brand {
+            font-family: 'serif';
+            color: white;
+        }
+        .navbar-custom .nav-link {
+            color: white;
+            margin-right: 15px;
+        }
+        .navbar-custom .nav-link:hover {
+            color: #978667;
+        }
+
+        /* Card Styles */
+        .card {
+            border-radius: 10px;
+            border: 1px solid #978667;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto; /* Ensures card is centered with margin */
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        /* Section Headings */
+        .fw-bold {
+            color: #978667;
+        }
+
+        /* Voucher Code Styling */
+        .voucher-code {
+            background-color: #f0f0f5;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Elite Logo */
+        .elite-logo {
+            color: #978667;
+            font-weight: bold;
+        }
+
+        p {
+            text-align: left;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar Code -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <div style="position: relative; width: 100px; height: 50px;">
+                <img src="images/11d5971b5545814c5afa15ad35037c25.png" alt="Midtown Logo 1"
+                    style="position: absolute; top: 0; left: 0; width: 135px; height: 45px;">
+                <img src="images/b716f6adf81e5ddbca9c6f970a6446af.png" alt="Midtown Logo 2"
+                    style="position: absolute; top: 0; left: 0; width: 135px; height: 45px;">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Navbar Links -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Find Accommodation</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Jakarta</a></li>
+                            <li><a class="dropdown-item" href="#">Surabaya</a></li>
+                            <li><a class="dropdown-item" href="#">Samarinda</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Special Offers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About Membership</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://midtown.id/contact">Contact</a></li>
+                    <li class="nav-item"><img onclick="displayTooltip('main')" src="images/elite.png" width="70" height="40"
+                        alt style="cursor:pointer;"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="card">
+            <div class="card-body text-center">
+                <h2 class="elite-logo mb-4">Voucher</h2>
+
+                <div>
+                    <p class="fw-bold">Member Detail</p>
+                    <p class="voucher-code">VOUCHER CODE: {{ $voucherData['voucher_code'] }}</p>
+                    <p>Member Name: {{ $voucherData['member_name'] }}</p>
+                    <p>Member Number: {{ $voucherData['member_number'] }}</p>
+                    <p>Email: {{ $voucherData['member_email'] }}</p>
+                    <p>Member Tier: {{ $voucherData['member_tier'] }}</p>
+                    <p>Redeem Date: {{ $voucherData['redeem_date'] }}</p>
+                    <p>Time: {{ $voucherData['redeem_time'] }}</p>
+                </div>
+
+                <div class="mt-4">
+                    <p class="fw-bold">Voucher Detail</p>
+                    <p>Room Type: {{ $voucherData['room_type'] }}</p>
+                    <p>Detail: {{ $voucherData['room_detail'] }}</p>
+                    <p>Length Stay: {{ $voucherData['stay_length'] }}</p>
+                    <p>Stay Valid Date Until: {{ $voucherData['valid_until'] }}</p>
+                    <p>Available at: {{ $voucherData['hotel_location'] }}</p>
+                    <p>Deduction Point: {{ $voucherData['deduction_points'] }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

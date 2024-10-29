@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voucher Options - Midtown</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-custom {
+            background-color: black;
+        }
+        .navbar-custom .navbar-brand {
+            font-family: 'serif';
+            color: white;
+        }
+        .navbar-custom .nav-link {
+            color: white;
+            margin-right: 15px;
+        }
+        .navbar-custom .nav-link:hover {
+            color: #978667;
+        }
+        .elite-logo {
+            color: #d4a136;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            padding: 50px;
+        }
+        .divider {
+            border-top: 2px solid #978667; 
+            margin: 20px 0; 
+            text-align: center; 
+        }
+        h1 {
+            opacity: 0; /* Mulai dari transparan */
+            animation: fadeInText 3s forwards; /* Animasi muncul */ 
+            margin-top: 40px;
+            text-align: center;
+        }
+        .card {
+            display: flex;
+            align-items: flex-start;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+
+            /* Fade-in animation */
+            opacity: 0; /* Start transparent */
+            transform: translateY(20px);  
+            transition: opacity 2s ease, transform 2s ease; 
+        }
+        /* Keyframes untuk elemen yang muncul */
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0); 
+        }
+        .card img {
+            border-radius: 10px;
+            height: auto;
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        .card-body {
+            flex: 1;
+        }
+        .card-text {
+            text-align: left;
+        }
+        .card-title {
+            color: #978667;
+        }
+        .btn{
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #978667;
+            border: #978667;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 150px;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #6d6350;
+            border: #6d6350;
+        }
+        .btn:active:focus {
+            background-color: #4e4636;
+            border-color: #4e4636;
+            color: white;
+            outline: none;
+            box-shadow: none; 
+        }
+        .modal-title {
+            margin-left: 10px;
+        }
+
+        /* Mengatur ukuran carousel agar tidak memenuhi seluruh layar */
+        .carousel {
+            height: 700px;
+            overflow: hidden; 
+            position: relative;
+        }
+
+        .carousel img {
+            height: 100vh; /* Menjaga tinggi penuh pada viewport */
+            width: auto; /* Membiarkan lebar menyesuaikan tinggi */
+            object-fit: cover; /* Mengisi frame dengan proporsi yang tepat */
+            object-position: center; /* Memusatkan gambar */
+            max-width: none; /* Agar lebar tidak diubah mengikuti lebar container */
+            filter: brightness(50%); /* Shading hitam */
+        }
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none; 
+        }
+        .carousel-text {            
+            text-align: center;
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            opacity: 0; /* Mulai dari transparan */
+            animation: fadeInText 3s forwards; /* Animasi muncul */
+            font-family: Arial, sans-serif; /* Font tebal */
+            text-shadow: 2px 2px 5px black; /* Sedikit efek shadow untuk menonjolkan tulisan */
+        }
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translateY(20px); /* Mulai dari bawah */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); /* Bergerak ke atas */
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px); /* Start slightly below */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); /* Move to original position */
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Navbar Code -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <div style="position: relative; width: 100px; height: 50px;">
+                <img src="images/11d5971b5545814c5afa15ad35037c25.png" alt="Midtown Logo 1" style="position: absolute; top: 0; left: 0; width: 135px; height: 45px;">
+                <img src="images/b716f6adf81e5ddbca9c6f970a6446af.png" alt="Midtown Logo 2" style="position: absolute; top: 0; left: 0; width: 135px; height: 45px;">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Find Accommodation
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Jakarta</a></li>
+                            <li><a class="dropdown-item" href="#">Surabaya</a></li>
+                            <li><a class="dropdown-item" href="#">Samarinda</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Special Offers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About Membership</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://midtown.id/contact">Contact</a></li>
+                    <li class="nav-item">
+                        <img onclick="displayTooltip('main')" src="images/elite.png" width="70" height="40" alt style="cursor:pointer;">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carousel -->
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images/MRJ.png" class="d-block w-100" alt="Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="images/MRJ2.png" class="d-block w-100" alt="Image 2">
+            </div>
+            <div class="carousel-item">
+                <img src="images/MRJ3.jpg" class="d-block w-100" alt="Image 3">
+            </div>
+            <div class="carousel-item">
+                <img src="images/MRJ4.jpg" class="d-block w-100" alt="Image 4">
+            </div>
+            <div class="carousel-item">
+                <img src="images/MRJ5.jpg" class="d-block w-100" alt="Image 5">
+            </div>
+        </div>
+        <!-- Overlay Text -->
+        <div class="carousel-overlay">
+            <div class="carousel-text">Midtown Residence Jakarta</div>
+        </div>
+    </div>
+
+    <h1>Confirmation</h1>
+
+    <div class="divider"></div>
+
+    <div class="container">
+        <div class="card" style="width: 30rem;">
+            <img src="images/kamar 1.png" alt="Kamar 1">
+            <div class="card-body">
+                <h5 class="card-title">Member Detail</h5>              
+                <p class="card-text">
+                    <strong>Member Name:</strong> Mohammad Syaroni Syawaludin<br>
+                    <strong>Member Number:</strong> 13265264<br>
+                    <strong>Email:</strong> mohsyaronisyawaludin99@gmail.com<br>
+                    <strong>Member Tier:</strong> Elite Fabulous<br>
+                    <strong>Elite Point:</strong> 3200<br>
+                    <strong>Redeem Date:</strong> 23 October 2024
+                </p>
+                <h5 class="card-title">Voucher Detail</h5>              
+                <p class="card-text">
+                    <strong>Room Type:</strong> Cool Room<br>
+                    <strong>Detail:</strong> Room Only<br>
+                    <strong>Length of Stay:</strong> 1 Night<br>
+                    <strong>Stay Valid Date:</strong> 90 Days<br>
+                    <strong>Available at:</strong> Midtown Residence Jakarta<br>
+                    <strong>Deduction Point:</strong> 3000
+                </p>
+                <button class="btn btn-primary" onclick="goToNotifSucces()">Claim</button>
+            </div>
+        </div>
+    </div>         
+
+    <!-- Modal -->
+    <div class="modal" tabindex="-1" id="exampleModal"> <!-- Tambahkan ID di sini -->
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa-solid fa-circle-check fa-2xl" style="color: #679786;"></i>
+                    <h5 class="modal-title">Congratulations!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>You have successfully redeemed your voucher.<br>
+                       Please check your email to download your online voucher</br>
+                       </p>
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Form for Email Submission -->
+    <form id="emailForm" style="display:none;">
+        <input type="email" name="email" id="userEmail" value="aennovaryn@student.ciputra.ac.id" required>
+        <input type="hidden" name="voucherDetails" id="voucherDetails">
+    </form>
+
+    <script>
+        function goToNotifSucces() {
+            // var modalEl = document.getElementById('exampleModal'); // Ambil elemen berdasarkan ID
+            // var modal = new bootstrap.Modal(modalEl); // Inisialisasi modal
+            // modal.show(); // Tampilkan modal
+
+            // Prepare voucher details for the PDF
+            const voucherDetails = {
+                voucherCode: "IHKASJ161432SD",
+                memberName: "Mohammad Syaroni Syawaludin",
+                memberNumber: "13265264",
+                email: document.getElementById('userEmail').value,
+                memberTier: "Elite Fabulous",
+                elitePoint: 3200,
+                redeemDate: "23 October 2024",
+                roomType: "Cool Room",
+                detail: "Room Only",
+                lengthOfStay: "1 Night",
+                stayValidDate: "90 Days",
+                availableAt: "Midtown Residence Jakarta",
+                deductionPoint: 3000
+            };
+
+            // Convert voucher details to a JSON string (or format as needed)
+            document.getElementById('voucherDetails').value = JSON.stringify(voucherDetails);
+
+            // Send email (implement the sending functionality in your backend)
+            sendEmail();
+        }
+
+        function sendEmail() {
+            const emailForm = document.getElementById('emailForm');
+            
+            // Simulate sending email via AJAX (replace with actual AJAX call to your backend)
+            fetch('YOUR_BACKEND_API_ENDPOINT', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: emailForm.userEmail.value,
+                    voucherDetails: emailForm.voucherDetails.value
+                })
+            })
+            .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+        })
+        .then(data => {
+            // Assume the response contains a field 'success' indicating if the email was sent successfully
+            if (data.success) {
+                console.log('Email sent:', data.message); // Tampilkan pesan sukses di konsol
+                // Update UI untuk memberi tahu pengguna bahwa email telah terkirim
+                alert("Email berhasil dikirim! Silakan periksa kotak masuk Anda.");
+            } else {
+                console.error('Email sending failed:', data.message);
+                // Tampilkan pesan kegagalan
+                alert("Gagal mengirim email: " + data.message);
+            }
+        })
+        .catch((error) => {
+            console.error('Error sending email:', error);
+            alert("Terjadi kesalahan saat mengirim email. Silakan coba lagi.");
+        });
+            }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script>
+        function goToNotifSucces() {
+            var modalEl = document.getElementById('exampleModal'); // Ambil elemen berdasarkan ID
+            var modal = new bootstrap.Modal(modalEl); // Inisialisasi modal
+            modal.show(); // Tampilkan modal
+        }
+    </script> -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cards = document.querySelectorAll(".card");
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = "1";
+                    card.style.transform = "translateY(0)";
+                }, index * 800); // Animasi berurutan dengan jeda 300ms
+            });
+        });
+    </script>
+</body>
+</html>

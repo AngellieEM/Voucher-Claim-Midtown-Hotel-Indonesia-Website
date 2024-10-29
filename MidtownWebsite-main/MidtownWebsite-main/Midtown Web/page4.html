@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midtown Residence Jakarta</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .navbar-custom {
+            background-color: black; 
+        }
+        .navbar-custom .navbar-brand {
+            font-family: 'serif'; 
+            color: white;
+        }
+        .navbar-custom .nav-link {
+            color: white;
+            margin-right: 15px;
+        }
+        .navbar-custom .nav-link:hover {
+            color: #978667; 
+        }
+        .elite-logo {
+            color: #d4a136; 
+            font-weight: bold;
+        }
+        body {            
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Tiga card per baris */
+            gap: 20px; /* Jarak antar card */
+            padding: 50px;
+        }
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr); /* Dua kolom untuk layar medium */
+            }
+        }
+        @media (max-width: 576px) {
+            .container {
+                grid-template-columns: 1fr; /* Satu kolom untuk layar kecil */
+            }
+        }
+        .card {
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;            
+            height:fit-content;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            margin-bottom: 15px;
+            overflow: hidden; /* Ensures that the content does not overflow the card */
+
+            /* Fade-in animation */
+            opacity: 0; /* Start transparent */
+            transform: translateY(20px);  
+            transition: opacity 0.9s ease, transform 0.9s ease; 
+        }
+        /* Keyframes untuk elemen yang muncul */
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0); 
+        }
+        .card img {
+            border-radius: 10px;
+            width: 100%; /* Make the image take the full width of the card */
+            height: auto; /* Maintain aspect ratio */
+            max-height: 200px; /* Set a maximum height for the image */
+            object-fit: cover; /* Ensure the image covers the area while keeping the aspect ratio */
+            margin-bottom: 15px; /* Space between the image and the details */ 
+        }
+        .details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+        }
+        .details h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .details .room-type {
+            font-weight: bold;
+            margin: 20px 0 10px;
+        }
+
+        .details p {
+            margin: 5px 0;
+        }
+
+        .details .price {
+            font-weight: bold;
+            margin-top: 10px;
+            color: #e60000; 
+        }
+        .redeem-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #978667;
+            border: #978667;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 150px;
+            text-align: center;
+        }
+        .redeem-btn:hover {
+            background-color: #6d6350;
+            border: #6d6350;
+        }
+        .redeem-btn:active:focus {
+            background-color: #4e4636;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            opacity: 0; /* Mulai dari transparan */
+            animation: fadeInText 3s forwards; /* Animasi muncul */ 
+        }
+        .label {
+            font-weight: bold;
+        }
+        /* Mengatur ukuran carousel agar tidak memenuhi seluruh layar */
+        .carousel {
+            height: 700px;
+            overflow: hidden; 
+            position: relative;
+        }
+
+        .carousel img {
+            height: 100vh; /* Menjaga tinggi penuh pada viewport */
+            width: auto; /* Membiarkan lebar menyesuaikan tinggi */
+            object-fit: cover; /* Mengisi frame dengan proporsi yang tepat */
+            object-position: center; /* Memusatkan gambar */
+            max-width: none; /* Agar lebar tidak diubah mengikuti lebar container */
+            filter: brightness(50%); /* Shading hitam */
+        }
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none; 
+        }
+        .carousel-text {            
+            color: white;
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            opacity: 0; /* Mulai dari transparan */
+            animation: fadeInText 3s forwards; /* Animasi muncul */            
+            text-shadow: 2px 2px 5px black; /* Sedikit efek shadow untuk menonjolkan tulisan */
+        }
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translateY(20px); /* Mulai dari bawah */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); /* Bergerak ke atas */
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px); /* Start slightly below */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); /* Move to original position */
+            }
+        }
+        
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <div style="position: relative; width: 100px; height: 50px;">
+                <img src="images/11d5971b5545814c5afa15ad35037c25.png" alt="Midtown Logo 1" style="position: absolute; top: 0; left: 0; width: 135px; height: 45px;">
+                <img src="images/b716f6adf81e5ddbca9c6f970a6446af.png" alt="Midtown Logo 2" style="position: absolute; top: 0; left: 0; width: 135px; height: 45px;">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Find Accommodation
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Jakarta</a></li>
+                            <li><a class="dropdown-item" href="#">Surabaya</a></li>
+                            <li><a class="dropdown-item" href="#">Samarinda</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Special Offers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Membership</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://midtown.id/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <img onclick="displayTooltip('main')" src="images/elite.png" width="70" height="40" alt style="cursor:pointer;">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carousel -->
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images/MRJ.png" class="d-block w-100" alt="Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="images/MRJ2.png" class="d-block w-100" alt="Image 2">
+            </div>
+            <div class="carousel-item">
+                <img src="images/MRJ3.jpg" class="d-block w-100" alt="Image 3">
+            </div>
+            <div class="carousel-item">
+                <img src="images/MRJ4.jpg" class="d-block w-100" alt="Image 4">
+            </div>
+            <div class="carousel-item">
+                <img src="images/MRJ5.jpg" class="d-block w-100" alt="Image 5">
+            </div>
+        </div>
+        <!-- Overlay Text -->
+        <div class="carousel-overlay">
+            <div class="carousel-text">Midtown Residence Jakarta</div>
+        </div>
+    </div>    
+
+    <h1>Voucher Options</h1>
+
+    <div class="container">
+        <div class="card">
+            <img src="images/kamar 1.png" alt="Foto Kamar MRJ">
+            <div class="details">
+                <h3>Cool Voucher</h3>                
+                <p><span class="label">Room Type:</span> Cool Room</p>
+                <p><span class="label">Detail:</span> Room Only</p>
+                <p><span class="label">Lengthstay:</span> 1 Night</p>
+                <p><span class="label">Stay Valid Date:</span> 90 days</p>
+                <p><span class="label">Available at:</span> Midtown Residence Jakarta</p>
+                <p class="price">Price: 3000</p>
+                <button class="redeem-btn" onclick="window.location.href='page5.html'">Details</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/kamar 2.png" alt="Foto Kamar MRJ">
+            <div class="details">
+                <h3>Groovy Voucher</h3>                
+                <p><span class="label">Room Type:</span> Cool Room</p>
+                <p><span class="label">Detail:</span> Room Only</p>
+                <p><span class="label">Lengthstay:</span> 1 Night</p>
+                <p><span class="label">Stay Valid Date:</span> 90 days</p>
+                <p><span class="label">Available at:</span> Midtown Residence Jakarta</p>
+                <p class="price">Price: 6000</p>
+                <button class="redeem-btn" onclick="window.location.href='page5.html'">Details</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/kamar 3.png" alt="Foto Kamar MRJ">
+            <div class="details">
+                <h3>Classy Voucher</h3>                
+                <p><span class="label">Room Type:</span> Cool Room</p>
+                <p><span class="label">Detail:</span> Room Only</p>
+                <p><span class="label">Lengthstay:</span> 1 Night</p>
+                <p><span class="label">Stay Valid Date:</span> 90 days</p>
+                <p><span class="label">Available at:</span> Midtown Residence Jakarta</p>
+                <p class="price">Price: 3000</p>
+                <button class="redeem-btn" onclick="window.location.href='page5.html'">Details</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/kamar 4.png" alt="Foto Kamar MRJ">
+            <div class="details">
+                <h3>Classy Voucher</h3>                
+                <p><span class="label">Room Type:</span> Cool Room</p>
+                <p><span class="label">Detail:</span> Room Only</p>
+                <p><span class="label">Lengthstay:</span> 1 Night</p>
+                <p><span class="label">Stay Valid Date:</span> 90 days</p>
+                <p><span class="label">Available at:</span> Midtown Residence Jakarta</p>
+                <p class="price">Price: 6000</p>
+                <button class="redeem-btn" onclick="window.location.href='page5.html'">Details</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/kamar 5.png" alt="Foto Kamar MRJ">
+            <div class="details">
+                <h3>Groovy Voucher</h3>                
+                <p><span class="label">Room Type:</span> Cool Room</p>
+                <p><span class="label">Detail:</span> Room Only</p>
+                <p><span class="label">Lengthstay:</span> 1 Night</p>
+                <p><span class="label">Stay Valid Date:</span> 90 days</p>
+                <p><span class="label">Available at:</span> Midtown Residence Jakarta</p>
+                <p class="price">Price: 6000</p>
+                <button class="redeem-btn" onclick="window.location.href='page5.html'">Details</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cards = document.querySelectorAll(".card");
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = "1";
+                    card.style.transform = "translateY(0)";
+                }, index * 800); // Animasi berurutan dengan jeda 300ms
+            });
+        });
+    </script>
+    
+
+    <!-- Script Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Stay - Midtown</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-custom {
+            background-color: black;
+        }
+
+        .navbar-custom .navbar-brand {
+            font-family: 'serif';
+            color: white;
+        }
+
+        .navbar-custom .nav-link {
+            color: white;
+            margin-right: 15px;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #f0ad4e;
+        }
+
+        .elite-logo {
+            color: #d4a136;
+            font-weight: bold;
+        }
+
+        /* Button Styling */
+        .hotel-btn {
+            background-color: transparent;
+            border: none;
+            position: relative;
+            padding: 0;
+            text-align: left;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        /* Image fill and hover scale effect */
+        .hotel-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            display: block;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .hotel-btn:hover img {
+            transform: scale(1.12);
+        }
+
+        /* Hotel info overlay */
+        .hotel-btn .info {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            width: 90%;
+            padding: 5px;
+            color: white;
+            border-radius: 0 0 10px 10px;
+            text-align: left;
+            transform: translatex(-50%);
+            transition: bottom 0.4s ease, color 0.4s ease;
+            font-size: 0.5em;
+            z-index: 2;
+            /* Make sure the hotel name is on top */
+        }
+
+        /* Read more underline effect */
+        .hotel-btn .read-more {
+            margin-top: 10px;
+            font-size: 14px;
+            position: relative;
+            padding-bottom: 5px;
+            color: transparent;
+            display: inline-block;
+            transition: color 0.3s ease, opacity 0.4 ease;
+            opacity: 0;
+        }
+
+        /* Underline animation */
+        .hotel-btn .read-more::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #fcfcfb;
+            left: 0;
+            bottom: -5px;
+            transition: width 0.4s ease;
+        }
+
+        /* Slide up the hotel name and reveal the Read More on hover */
+        .hotel-btn:hover .info {
+            bottom: 14%;
+            opacity: 1;
+        }
+
+        .hotel-btn:hover .read-more {
+            color: white;
+            opacity: 1;
+        }
+
+        .hotel-btn:hover .read-more::after {
+            width: 100%;
+        }
+
+        .hotel-btn .read-more:note(:hover) {
+            opacity: 0;
+        }
+
+        .free-stay-info {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        /* Gradient shadow between image and name */
+        .hotel-btn::before {
+            content: '';
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2), transparent);
+            /* Gradient shadow from bottom to top */
+            z-index: 1;
+            transition: top 0.4s ease;
+        }
+
+        .hotel-btn:hover::before {
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar Code -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <div style="position: relative; width: 100px; height: 50px;">
+                <img src="images/11d5971b5545814c5afa15ad35037c25.png" alt="Midtown Logo 1"
+                    style="position: absolute; top: 0; left: 0; width: 135px; height: 45px;">
+                <img src="images/b716f6adf81e5ddbca9c6f970a6446af.png" alt="Midtown Logo 2"
+                    style="position: absolute; top: 0; left: 0; width: 135px; height: 45px;">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Navbar Links -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Find Accommodation</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Jakarta</a></li>
+                            <li><a class="dropdown-item" href="#">Surabaya</a></li>
+                            <li><a class="dropdown-item" href="#">Samarinda</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Special Offers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About Membership</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://midtown.id/contact">Contact</a></li>
+                    <li class="nav-item"><img onclick="displayTooltip('main')" src="images/elite.png" width="70" height="40"
+                            alt style="cursor:pointer;"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Free Stay Information -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="fw-bold">Free Stay</h1>
+                <p class="free-stay-info">Enjoy your comfort staycation with redeem your Elite Point and discover
+                    hundreds of the newest gems in every city!</p>
+            </div>
+        </div>
+
+        <!-- Hotel Button Grid -->
+        <div class="row">
+            <!-- Hotel Buttons -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <button class="hotel-btn" onclick="window.location.href='page4.html'">
+                    <img src="images/MRJ.png" alt="Midtown Residence Jakarta">
+                    <div class="info">
+                        <h3>Midtown Residence Jakarta</h3>
+                        <div class="read-more">Read More</div>
+                    </div>
+                </button>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <button class="hotel-btn" onclick="window.location.href='page4.html'">
+                    <img src="images/MRSby.png" alt="Midtown Residence Surabaya">
+                    <div class="info">
+                        <h3>Midtown Residence Surabaya</h3>
+                        <div class="read-more">Read More</div>
+                    </div>
+                </button>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <button class="hotel-btn" onclick="window.location.href='page4.html'">
+                    <img src="images/CPhotelSBY.png" alt="Crown Prince Hotel Surabaya">
+                    <div class="info">
+                        <h3>Crown Prince Hotel Surabaya</h3>
+                        <div class="read-more">Read More</div>
+                    </div>
+                </button>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <button class="hotel-btn" onclick="window.location.href='page4.html'">
+                    <img src="images/Verwood.png" alt="Verwood Hotel Surabaya">
+                    <div class="info">
+                        <h3>Verwood Hotel & Serviced Residence Surabaya</h3>
+                        <div class="read-more">Read More</div>
+                    </div>
+                </button>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <button class="hotel-btn" onclick="window.location.href='page4.html'">
+                    <img src="images/MHotelSBY.png" alt="Midtown Hotel Surabaya">
+                    <div class="info">
+                        <h3>Midtown Hotel Surabaya</h3>
+                        <div class="read-more">Read More</div>
+                    </div>
+                </button>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <button class="hotel-btn" onclick="window.location.href='page4.html'">
+                    <img src="images/MSamarinda.png" alt="Grand Midtown Xpress Samarinda" style="object-fit: cover;">
+                    <div class="info">
+                        <h3>Midtown Hotel Samarinda</h3>
+                        <div class="read-more">Read More</div>
+                    </div>
+                </button>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <button class="hotel-btn" onclick="window.location.href='page4.html'">
+                    <img src="images/Mbpp.png" alt="Midtown Xpress Balikpapan">
+                    <div class="info">
+                        <h3>Midtown Xpress Balikpapan</h3>
+                        <div class="read-more">Read More</div>
+                    </div>
+                </button>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <button class="hotel-btn" onclick="window.location.href='page4.html'">
+                    <img src="images/MSampit.png" alt="Midtown Xpress Sampit">
+                    <div class="info">
+                        <h3>Midtown Xpress Sampit</h3>
+                        <div class="read-more">Read More</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script>
+        function displayTooltip(tooltipId) {
+            // Placeholder function for tooltip display logic
+            console.log("Display tooltip for:", tooltipId);
+        }
+    </script>
+</body>
+
+</html>
